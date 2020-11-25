@@ -24,9 +24,9 @@ mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FA
 
 Arguments:
 
-grid      SpatialPolygonDataFrame object with a system of grid cells that represents a given study area.
+**grid**      SpatialPolygonDataFrame object with a system of grid cells that represents a given study area.
 
-mpa       presence-absence matrix with species names in the rows and grid IDs in the columns (Note that grid IDs must             match between grid system and presence-absence matrix).
+**mpa**       presence-absence matrix with species names in the rows and grid IDs in the columns (Note that grid IDs                  must match between grid system and presence-absence matrix).
 
 lsp       data.frame with two columns. The first column must have species names, the second column must have BEs                  codes (Note that species names must match between presence-absence matrix and the data frame). 
 
