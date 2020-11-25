@@ -398,9 +398,32 @@ summary {
 <h3><strong><em>Details:</em></strong></h3>
 <p>BEA output preview through ‘<em>mapar</em>’ demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to ‘<em>noise component</em>’ (identifyed as “0” in the data.frame). If user wants to remove the noise component species prior to running ‘<em>mapar</em>’ please use de code:</p>
 <pre><code>mpa &lt;- mpa[lsp[,1][lsp[,2]!=0],] #removes noise component species from matrix &#39;mpa&#39;
-lsp &lt;- lsp[lsp[2]!=0,] #removes noise component species from data.frame &#39;lsp&#39;
-</code></pre>
-<p>Note that if you want to change the data frame, you will have to reaload ‘mpa’ as ‘<em>noise component</em>’ species may vary between different clustering results.</p>
+lsp &lt;- lsp[lsp[2]!=0,] #removes noise component species from data.frame &#39;lsp&#39;</code></pre>
+<p>Note that if you want to change the data frame, you will have to also reaload ‘mpa’, as ‘<em>noise component</em>’ species may vary between different clustering results.</p>
+</div>
+<div id="value" class="section level3">
+<h3><strong><em>Value:</em></strong></h3>
+<p>If prop = FALSE, ‘<em>mapar</em>’ returns a list with two components:</p>
+<ul>
+<li><strong>comp1:</strong> List of length N containing individual presence-absence matrices for N BEs.</li>
+<li><strong>com2:</strong> List of length N containing individual ‘<em>SpatialPolygonsDataFrame</em>’ objects related to N BEs.</li>
+</ul>
+<p>If prop = TRUE, ‘<em>mapar</em>’ returns a list with three components, the two mentioned above and:</p>
+<ul>
+<li><strong>comp3:</strong> List of length N containing vectors with ‘<em>alpha</em>’ values (<em>col=rgd(r, g, b, alpha)</em>) related to individual species proportion per grid cell (0.05 for cells with &lt;30%, 0.3 for cells with 30%-70%, 0.7 for cells with &lt;70%. see ‘<em>prop</em>’) for N BEs.</li>
+</ul>
+</div>
+<div id="warning" class="section level3">
+<h3><strong><em>Warning:</em></strong></h3>
+<ul>
+<li><p>‘<em>mapar</em>’ attributes to <em>colnames(mpa)</em> the IDs found in the grid system provided. It is the user’s responsability to assure that the presence-abscence matrix was created based on the grid system provided or results might not represent the actual outcome.</p></li>
+<li><p>‘<em>mapar</em>’ uses a standard nomenclature based on BEs codes (provided in ‘<em>lsp</em>’) to save .shp files. If the working directory already has a file with the same name (Ex.: after a previous ‘<em>mapar</em>’ run) the new outcome will not be saved and the fuction will deliver an error message. The same happens if grp = TRUE and there are multiple runs.</p></li>
+</ul>
+</div>
+<div id="author" class="section level3">
+<h3><strong><em>Author:</em></strong></h3>
+<p>Vieira-Alencar, João Paulo dos Santos (<a href="mailto:joaopaulo.valencar@usp.br" class="email">joaopaulo.valencar@usp.br</a>)</p>
+<p>Laboratório de Ecologia, Evolução e Conservação de Vertebrados, Departamento de Ecologia, Universidade de São Paulo, São Paulo/SP - Brasil</p>
 </div>
 </div>
 

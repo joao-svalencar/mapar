@@ -1,8 +1,6 @@
 # 'mapar'
 
-First published version released on November 25th of 2020.
-
-### 'mapar' is a R function developed by the Ecology Ph.D. student at Universidade de São Paulo (USP) João Paulo dos Santos Vieira de Alencar.
+*First published version released on November 25th of 2020.*
 
 This function allows users to preview in R environment the Biotic Element Analysis (BEA - Hausdorf & Hennig, 2003) output in a easy interactive way. Additionally, users may save the output as a .shp file for further edition in GIS softwares.
 
@@ -70,7 +68,17 @@ If prop = TRUE, '*mapar*' returns a list with three components, the two mentione
 
 * '*mapar*' uses a standard nomenclature based on BEs codes (provided in '*lsp*') to save .shp files. If the working directory already has a file with the same name (Ex.: after a previous '*mapar*' run) the new outcome will not be saved and the fuction will deliver an error message. The same happens if grp = TRUE and there are multiple runs.
 
+### ***See also:***
+* class: *SpatialPolygonDataFrame
+
+### ***Examples***
+
+Files and codes will be provided further
+
 ### ***Author:***
 
 Vieira-Alencar, João Paulo dos Santos (joaopaulo.valencar@usp.br)
+
+Ph.D Student at Programa de Pós-graduação em Ecologia
+
 Laboratório de Ecologia, Evolução e Conservação de Vertebrados, Departamento de Ecologia, Universidade de São Paulo, São Paulo/SP - Brasil
