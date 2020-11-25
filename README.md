@@ -81,8 +81,10 @@ The author thanks Professor Alexandre Adalardo de Oliveira for high quality clas
 
 ### ***Author:***
 
-Vieira-Alencar, João Paulo dos Santos (joaopaulo.valencar@usp.br)
+Vieira-Alencar, João Paulo dos Santos (joaopaulo.valencar@usp.br) [Orcid](https://orcid.org/0000-0001-6894-6773)
 
 Ph.D Student at Programa de Pós-graduação em Ecologia
 
 Laboratório de Ecologia, Evolução e Conservação de Vertebrados, Departamento de Ecologia, Universidade de São Paulo, São Paulo/SP - Brasil
+
+

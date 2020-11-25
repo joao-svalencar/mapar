@@ -367,9 +367,7 @@ summary {
 
 <div id="mapar" class="section level1">
 <h1>‘mapar’</h1>
-<p>First published version released on November 25th of 2020.</p>
-<div id="mapar-is-a-r-function-developed-by-the-ecology-ph.d.-student-at-universidade-de-são-paulo-usp-joão-paulo-dos-santos-vieira-de-alencar." class="section level3">
-<h3>‘mapar’ is a R function developed by the Ecology Ph.D. student at Universidade de São Paulo (USP) João Paulo dos Santos Vieira de Alencar.</h3>
+<p><em>First published version released on November 25th of 2020.</em></p>
 <p>This function allows users to preview in R environment the Biotic Element Analysis (BEA - Hausdorf &amp; Hennig, 2003) output in a easy interactive way. Additionally, users may save the output as a .shp file for further edition in GIS softwares.</p>
 <p>Biotic Element Analysis is performed in R environment through package ‘<em>prabclus</em>’. It is based on the comparison of species ranges in order to determine if species ranges are clustered forming distinct biotas. The analysis departs from a presence-absence matrix obtained from the intersection of species ranges and a grid system that represents a given study area. The result of the clustering methods available in the ‘<em>prabclus</em>’ package is a data frame with two columns: a) a column with species names; and b) the number that represents the group that a given species compose.</p>
 <p>The challenge imposed was related to the mapping process that relied on users: a) to go into a GIS software; b) to plot species ranges of all species assigned to a given biota; c) to intercect these ranges with the original grid system; d) to export the intersected grid cells as a independent .shp file in order to be able to edit them; e) finally, to map the results. Additionally, in some cases users also wanted to highlight specific grid cells with distinct proportions of species within. To do so, users needed: a) to go to a GIS software; b) to plot species ranges of all species assigned to a given biota; c) to manually count the number of species per grid cell and to divide by the total number of species within a given biota to finally obtain a proportion of species per grid cell; d) to edit grid cells individually making differences visible; e) finally, to map the results.</p>
@@ -377,7 +375,6 @@ summary {
 <p>With the ‘<em>mapar</em>’ function, users need to provide: a) the grid system from which the presence-absence matrix was obtained; b) the presence-absence matrix, with species names in rows and grid IDs in columns (Note that grid IDs must match between grid system and presence-absence matrix); c) the data frame obtained with the clustering analysis available in ‘<em>prabclus</em>’, with species names in the first column and the group code in the second column (Note that species names must match between presence-absence matrix and the data frame); and d) the .shp file that represents the study area.</p>
 <p>Besides the data frame, all other objects are needed to the BEA itself and are usually available to use within ‘<em>mapar</em>’ (Note that .shp files must be loaded in R as objects of ‘<em>sp</em>’ class. A further version of the function will allow ‘<em>sf</em>’ class objects as well). On the other hand, different data frames can be loaded to the function and the users can easily access their output without leaving R environment.</p>
 <p>A brief description of how to use the function is described below:</p>
-</div>
 <div id="usage" class="section level3">
 <h3><strong><em>Usage:</em></strong></h3>
 <p>mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FALSE)</p>
@@ -399,7 +396,7 @@ summary {
 <p>BEA output preview through ‘<em>mapar</em>’ demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to ‘<em>noise component</em>’ (identifyed as “0” in the data.frame). If user wants to remove the noise component species prior to running ‘<em>mapar</em>’ please use de code:</p>
 <pre><code>mpa &lt;- mpa[lsp[,1][lsp[,2]!=0],] #removes noise component species from matrix &#39;mpa&#39;
 lsp &lt;- lsp[lsp[2]!=0,] #removes noise component species from data.frame &#39;lsp&#39;</code></pre>
-<p>Note that if you want to change the data frame, you will have to also reaload ‘mpa’, as ‘<em>noise component</em>’ species may vary between different clustering results.</p>
+<p>Note that if you want to change the data frame (Ex.: providing a different clustering output), you will have to also reaload ‘mpa’, as ‘<em>noise component</em>’ species may vary between different clustering results.</p>
 </div>
 <div id="value" class="section level3">
 <h3><strong><em>Value:</em></strong></h3>
@@ -420,9 +417,24 @@ lsp &lt;- lsp[lsp[2]!=0,] #removes noise component species from data.frame &#39;
 <li><p>‘<em>mapar</em>’ uses a standard nomenclature based on BEs codes (provided in ‘<em>lsp</em>’) to save .shp files. If the working directory already has a file with the same name (Ex.: after a previous ‘<em>mapar</em>’ run) the new outcome will not be saved and the fuction will deliver an error message. The same happens if grp = TRUE and there are multiple runs.</p></li>
 </ul>
 </div>
+<div id="see-also" class="section level3">
+<h3><strong><em>See also:</em></strong></h3>
+<ul>
+<li>class: <em>SpatialPolygonDataFrame</em></li>
+</ul>
+</div>
+<div id="examples" class="section level3">
+<h3><strong><em>Examples</em></strong></h3>
+<p>Files and codes will be provided further</p>
+</div>
+<div id="aknowledgements" class="section level3">
+<h3><strong><em>Aknowledgements</em></strong></h3>
+<p>The author thanks Professor Alexandre Adalardo de Oliveira for high quality classes in R programming. Bruno Travassos de Britto, Filipe Alexandre Cabreirinha Serrano and Juan Camilo Diaz-Ricaurte provided insightful comments and valuable suggestions that improved the function. The author is funded by the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - Brasil (CAPES) - Finance Code 001.</p>
+</div>
 <div id="author" class="section level3">
 <h3><strong><em>Author:</em></strong></h3>
-<p>Vieira-Alencar, João Paulo dos Santos (<a href="mailto:joaopaulo.valencar@usp.br" class="email">joaopaulo.valencar@usp.br</a>)</p>
+<p>Vieira-Alencar, João Paulo dos Santos (<a href="mailto:joaopaulo.valencar@usp.br" class="email">joaopaulo.valencar@usp.br</a>) <a href="https://orcid.org/0000-0001-6894-6773">Orcid</a></p>
+<p>Ph.D Student at Programa de Pós-graduação em Ecologia</p>
 <p>Laboratório de Ecologia, Evolução e Conservação de Vertebrados, Departamento de Ecologia, Universidade de São Paulo, São Paulo/SP - Brasil</p>
 </div>
 </div>
