@@ -46,10 +46,9 @@ mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FA
 
 BEA output preview through '*mapar*' demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to '*noise component*' (identifyed as "0" in the data.frame). If user wants to remove the noise component species prior to running '*mapar*' please use de code:
 
-``` 
+```
 mpa <- mpa[lsp[,1][lsp[,2]!=0],] #removes noise component species from matrix 'mpa'
 lsp <- lsp[lsp[2]!=0,] #removes noise component species from data.frame 'lsp'
-
 ```
 
 Note that if you want to change the data frame, you will have to also reaload 'mpa', as '*noise component*' species may vary between different clustering results.
@@ -64,3 +63,14 @@ If prop = FALSE, '*mapar*' returns a list with two components:
 If prop = TRUE, '*mapar*' returns a list with three components, the two mentioned above and:
 
 * **comp3:** List of length N containing vectors with '*alpha*' values (*col=rgd(r, g, b, alpha)*) related to individual species proportion per grid cell (0.05 for cells with <30%, 0.3 for cells with 30%-70%, 0.7 for cells with <70%. see '*prop*') for N BEs.
+
+### ***Warning:***
+
+* '*mapar*' attributes to *colnames(mpa)* the IDs found in the grid system provided. It is the user's responsability to assure that the presence-abscence matrix was created based on the grid system provided or results might not represent the actual outcome. 
+
+* '*mapar*' uses a standard nomenclature based on BEs codes (provided in '*lsp*') to save .shp files. If the working directory already has a file with the same name (Ex.: after a previous '*mapar*' run) the new outcome will not be saved and the fuction will deliver an error message. The same happens if grp = TRUE and there are multiple runs.
+
+### ***Author:***
+
+Vieira-Alencar, João Paulo dos Santos (joaopaulo.valencar@usp.br)
+Laboratório de Ecologia, Evolução e Conservação de Vertebrados, Departamento de Ecologia, Universidade de São Paulo, São Paulo/SP - Brasil
