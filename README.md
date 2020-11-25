@@ -75,6 +75,10 @@ If prop = TRUE, '*mapar*' returns a list with three components, the two mentione
 
 Files and codes will be provided further
 
+### ***Aknowledgements***
+
+The author thanks Professor Alexandre Adalardo de Oliveira for high quality classes in R programming. Bruno Travassos de Britto, Felipe Serrano and Juan Camilo Diaz-Ricaurte provided insightful comments and valuable suggestions that improved the function.
+
 ### ***Author:***
 
 Vieira-Alencar, João Paulo dos Santos (joaopaulo.valencar@usp.br)
