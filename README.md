@@ -49,7 +49,7 @@ mpa <- mpa[lsp[,1][lsp[,2]!=0],] #removes noise component species from matrix 'm
 lsp <- lsp[lsp[2]!=0,] #removes noise component species from data.frame 'lsp'
 ```
 
-Note that if you want to change the data frame, you will have to also reaload 'mpa', as '*noise component*' species may vary between different clustering results.
+Note that if you want to change the data frame (Ex.: providing a different clustering output), you will have to also reaload 'mpa', as '*noise component*' species may vary between different clustering results.
 
 ### ***Value:***
 
