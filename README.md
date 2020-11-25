@@ -77,7 +77,7 @@ Files and codes will be provided further
 
 ### ***Aknowledgements***
 
-The author thanks Professor Alexandre Adalardo de Oliveira for high quality classes in R programming. Bruno Travassos de Britto, Felipe Serrano and Juan Camilo Diaz-Ricaurte provided insightful comments and valuable suggestions that improved the function.
+The author thanks Professor Alexandre Adalardo de Oliveira for high quality classes in R programming. Bruno Travassos de Britto, Filipe Alexandre Cabreirinha Serrano and Juan Camilo Diaz-Ricaurte provided insightful comments and valuable suggestions that improved the function. The author is funded by
 
 ### ***Author:***
 
