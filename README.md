@@ -54,13 +54,13 @@ lsp <- lsp[lsp[2]!=0,] #removes noise component species from data.frame 'lsp'
 
 Note that if you want to change the data frame, you will have to also reaload 'mpa', as '*noise component*' species may vary between different clustering results.
 
-### ***Value ***
+### ***Value:***
 
-If prop = FALSE, '*mapar*'returns a list with two components:
+If prop = FALSE, '*mapar*' returns a list with two components:
 
 * **comp1:** List of length N containing individual presence-absence matrices for N BEs.
 * **com2:** List of length N containing individual '*SpatialPolygonsDataFrame*' objects related to N BEs.
 
-If prop = TRUE, '*mapar*'returns a list with three components, the two mentioned above and:
+If prop = TRUE, '*mapar*' returns a list with three components, the two mentioned above and:
 
-* **comp3:** List of length N containing vectors with '*alpha*' values (col=rgd(r, g, b, alpha)) related to individual species proportion per grid cell (0.05 for cells with <30%, 0.3 for cells with 30%-70%, 0.7 for cells with <70%. see '*prop*') for N BEs.
+* **comp3:** List of length N containing vectors with '*alpha*' values (*col=rgd(r, g, b, alpha)*) related to individual species proportion per grid cell (0.05 for cells with <30%, 0.3 for cells with 30%-70%, 0.7 for cells with <70%. see '*prop*') for N BEs.
