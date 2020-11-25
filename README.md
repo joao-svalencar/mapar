@@ -22,24 +22,24 @@ Usage:
 
 mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FALSE)
 
-Arguments:
+***Arguments:***
 
 **grid**      SpatialPolygonDataFrame object with a system of grid cells that represents a given study area.
 
-**mpa**       presence-absence matrix with species names in the rows and grid IDs in the columns (Note that grid IDs                  must match between grid system and presence-absence matrix).
+**mpa**       presence-absence matrix with species names in the rows and grid IDs in the columns (Note that grid IDs must match between grid system and presence-absence matrix).
 
-lsp       data.frame with two columns. The first column must have species names, the second column must have BEs                  codes (Note that species names must match between presence-absence matrix and the data frame). 
+**lsp**       data.frame with two columns. The first column must have species names, the second column must have BEs codes (Note that species names must match between presence-absence matrix and the data frame). 
 
-plot      a logical value indicating whether the user wants to preview BEs in R. FALSE leads directly to the interactive           decision on to save or not BEs as .shp files.
+**plot**      a logical value indicating whether the user wants to preview BEs in R. FALSE leads directly to the interactive decision on to save or not BEs as .shp files.
 
-shp       SpatialPolygonDataFrame object representing the limits of study area (required if plot = TRUE).
+**shp**       SpatialPolygonDataFrame object representing the limits of study area (required if plot = TRUE).
 
-prop      a logical value indicating whether the user wants to preview proportions of species per grid cell. Default              settings shows cells with <30% of species, 30%-70% of species and >70% of species. A further version will               allow users to decide the proportions they want to visualize.
+**prop**      a logical value indicating whether the user wants to preview proportions of species per grid cell. Default settings shows cells with <30% of species, 30%-70% of species and >70% of species. A further version will allow users to decide the proportions they want to visualize.
 
-propcut   a numerical value between zero and one that indicates whether user wants to "cut" BEs preview to a especified           proportion of species. Ex.: If user wants to see only cells that contain MORE than 30% of species, propcut              value should be 0.3.
+**propcut**   a numerical value between zero and one that indicates whether user wants to "cut" BEs preview to a        especified proportion of species. Ex.: If user wants to see only cells that contain MORE than 30% of species, propcut value should be 0.3.
 
-nsp       a numerical value that indicates the minimum number of species required to preview a given grid cell. Ex.: If           user wants to preview only the BE cells that have AT LEAST two species, nsp value should be 2
+**nsp**       a numerical value that indicates the minimum number of species required to preview a given grid cell. Ex.: If user wants to preview only the BE cells that have AT LEAST two species, nsp value should be 2
 
-grp       a logical value that indicates whether user wants to export ALL BEs in a unique .shp file. FALSE leads to an            interactive question on which specific BE the user would like to export. User may choose between one and the            number of total BEs detected. If user wants to save ALL BEs as SEPARATED .shp files please, answer "all"                (without quotation marks) to that question.
+**grp**       a logical value that indicates whether user wants to export ALL BEs in a unique .shp file. FALSE leads to an interactive question on which specific BE the user would like to export. User may choose between one and the number of total BEs detected. If user wants to save ALL BEs as SEPARATED .shp files please, answer "all"  (without quotation marks) to that question.
 
 Details: 
