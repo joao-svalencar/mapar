@@ -4,6 +4,7 @@
 
 mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, grp=FALSE, nsp=1) #naming function and setting defauts
 {
+  require(rgdal)
   #modifying essential data for properly functioning
   colnames(mpa) <- sort(as.numeric(as.character(grid@data[["id"]]))) #attributing grid IDs to presence-absence matrix colnames
   lsp[1] <- as.character(lsp[,1]) #attributing "character" class to species column
@@ -55,7 +56,7 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, g
       map.ar[[i]] <- grid[which(grid@data[["id"]]%in%names(which(apply(areas[[i]], 2, sum)>=nsp))),] #creates individualized grids related to each groups' species occurrences
     }
   }else{
-    library(gtools)
+    require(gtools)
     for(i in 1:nrow(unique(lsp[2]))) #else for character areas codes
     {
       areas[[i]] <- mpa[as.character(lsp[,1][lsp[,2] == mixedsort(unique(lsp[,2]))[i]]),] #assign distinct species groups to distinct list areas positions
