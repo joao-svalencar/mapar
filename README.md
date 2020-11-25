@@ -69,7 +69,7 @@ If prop = TRUE, '*mapar*' returns a list with three components, the two mentione
 * '*mapar*' uses a standard nomenclature based on BEs codes (provided in '*lsp*') to save .shp files. If the working directory already has a file with the same name (Ex.: after a previous '*mapar*' run) the new outcome will not be saved and the fuction will deliver an error message. The same happens if grp = TRUE and there are multiple runs.
 
 ### ***See also:***
-* class: *SpatialPolygonDataFrame
+* class: *SpatialPolygonDataFrame*
 
 ### ***Examples***
 
