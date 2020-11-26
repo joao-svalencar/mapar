@@ -64,6 +64,8 @@ If prop = TRUE, '*mapar*' returns a list with three components, the two mentione
 
 ### ***Warning:***
 
+* '*mapar*' requires packages '*gtools*' and '*rgdal*'. If these packages are not installed and loaded, '*mapar*' will install and load them in the first run and warning messages will be delivered when it finish. Subsequent runs should not deliver warning messages related to these packages.
+
 * '*mapar*' attributes to *colnames(mpa)* the IDs found in the grid system provided. It is the user's responsability to assure that the presence-abscence matrix was created based on the grid system provided or results might not represent the actual outcome. 
 
 * '*mapar*' uses a standard nomenclature based on BEs codes (provided in '*lsp*') to save .shp files. If the working directory already has a file with the same name (Ex.: after a previous '*mapar*' run) the new outcome will not be saved and the fuction will deliver an error message. The same happens if grp = TRUE and there are multiple runs.
