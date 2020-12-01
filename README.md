@@ -2,7 +2,7 @@
 
 *First published version released on November 25th of 2020.*
 
-This function allows users to preview in R environment the Biotic Element Analysis (BEA - Hausdorf & Hennig, 2003) output in a easy interactive way. Additionally, users may save the output as a .shp file for further edition in GIS softwares.
+This function allows users to preview in R environment the Biotic Element Analysis (BEA - [Hausdorf & Hennig, 2003](https://doi.org/10.1080/10635150390235584)) output in a easy interactive way. Additionally, users may save the output as a .shp file for further edition in GIS softwares.
 
 Biotic Element Analysis is performed in R environment through package '*prabclus*'. It is based on the comparison of species ranges in order to determine if species ranges are clustered forming distinct biotas. The analysis departs from a presence-absence matrix obtained from the intersection of species ranges and a grid system that represents a given study area. The result of the clustering methods available in the '*prabclus*' package is a data frame with two columns: a) a column with species names; and b) the number that represents the group that a given species compose.
 
