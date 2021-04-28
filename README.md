@@ -56,7 +56,7 @@ Note that if you want to change the data frame (Ex.: providing a different clust
 If prop = FALSE, '*mapar*' returns a list with two components:
 
 * **comp1:** List of length N containing individual presence-absence matrices for N BEs.
-* **com2:** List of length N containing individual '*SpatialPolygonsDataFrame*' objects related to N BEs.
+* **comp2:** List of length N containing individual '*SpatialPolygonsDataFrame*' objects related to N BEs.
 
 If prop = TRUE, '*mapar*' returns a list with three components, the two mentioned above and:
 
