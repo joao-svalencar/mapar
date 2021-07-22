@@ -1,0 +1,95 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf500
+{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\fmodern\fcharset0 Courier-Bold;}
+{\colortbl;\red255\green255\blue255;\red127\green127\blue127;}
+{\*\expandedcolortbl;;\cssrgb\c57046\c57047\c57046;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww25100\viewh13140\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf0 \expnd0\expndtw0\kerning0
+mapar                package:disciplina.do.R                R Documentation\
+\
+
+\f1\b Mapeamento de \'e1reas
+\f0\b0 \
+\
+\cf2 Description :\cf0 \
+\
+A fun\'e7\'e3o mapar extrai de um grid espacial subconjuntos de grids formados a partir da distribui\'e7\'e3o geogr\'e1fica de um conjunto de esp\'e9cies selecionado pel@ usu\'e1ri@. Os subconjuntos de grids podem ser visualizados no dispositivo visual do R e/ou podem ser salvos em arquivos .shp para edi\'e7\'e3o em outros softwares (eg.: Sistemas de Informa\'e7\'e3o Geogr\'e1fica, QGIS, ArcGis, etc\'85)\
+\
+\cf2 Usage :\cf0 \
+\
+
+\f1\b mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, grp=FALSE)
+\f0\b0 \
+\
+\cf2 Arguments :\cf0 \
+\
+
+\f1\b grid
+\f0\b0 		Objeto da classe SpatialPolygonsDataFrame contendo um conjunto de pol\'edgonos interligados que sobrep\'f5em totalmente uma \'e1rea de estudos de interesse. Cada pol\'edgono do grid deve conter um c\'f3digo de identifica\'e7\'e3o relacionado na coluna \'93id\'94 do slot @data do objeto. \
+\
+
+\f1\b mpa
+\f0\b0 		Objeto da classe matrix representando uma matriz de presen\'e7a e aus\'eancia em que as colunas representam cada pol\'edgono (c\'e9lula) do objeto grid e as linhas representam as esp\'e9cies encontradas na \'e1rea de estudo. Zero representa a aus\'eancia de uma esp\'e9cie em um determinado pol\'edgono, e um representa a presen\'e7a. Os nomes das colunas devem corresponder com as informa\'e7\'f5es relacionadas na coluna \'93id\'94 do slot @data do objeto grid. A pr\'f3pria fun\'e7\'e3o mapar atribui aos nomes das colunas da matriz as informa\'e7\'f5es de \'93id\'94, mas @ usu\'e1rio deve garantir que a sequ\'eancia de colunas da matriz estejam na mesma sequ\'eancia de informa\'e7\'f5es dos \'93ids\'94 do objeto grid.\
+\
+
+\f1\b lsp
+\f0\b0 		Objeto da classe data.frame contendo duas colunas, a primeira contendo o nome das esp\'e9cies de interesse, e a segunda contendo um c\'f3digo de \'e1rea que funciona como fator de agrupamento das distribui\'e7\'f5es geogr\'e1ficas das esp\'e9cies.\
+\
+
+\f1\b plot		
+\f0\b0 Argumento l\'f3gico. Se plot=TRUE a fun\'e7\'e3o informa quantos subconjuntos de grid foram formados e se torna interativa aguardando input d@ usu\'e1ri@ selecionando qual subconjunto gostaria de visualizar. Ap\'f3s a exibi\'e7\'e3o do primeiro subconjunto selecionado pel@ usu\'e1ri@ a fun\'e7\'e3o aguarda um segundo input sobre o interesse em continuar visualizando os diferentes subconjunto formados pela fun\'e7\'e3o. Se @ usu\'e1ri@ alterar par(mfrow) antes de executar a fun\'e7\'e3o, m\'faltiplos subconjuntos de grid aparecer\'e3o no dispositivo visual do R.\
+
+\f1\b \
+shp
+\f0\b0 		Objeto da classe SpatialPolygonsDataFrame que representa a \'e1rea de estudo de interesse. Objeto requisitado caso @ usu\'e1ri@ opte por visualizar no dispositivo visual do R os subconjuntos de grid formados pela fun\'e7\'e3o.\
+\
+
+\f1\b prop		
+\f0\b0 Argumento l\'f3gico. Se prop=TRUE a fun\'e7\'e3o calcula a propor\'e7\'e3o n/m em que n representa o n\'famero de esp\'e9cies em um determinado pol\'edgono e m representa o n\'famero total de esp\'e9cies no subconjunto de pol\'edgonos. prop retorna um conjunto de valores de zero a um por c\'e9lula do subconjunto de grid que \'e9 aplicado em alpha no argumento col=rgb(r, g, b, alpha) e atribui transpar\'eancia diferentes de acordo com a propor\'e7\'e3o n/m calculada para cada c\'e9lula. C\'e9lulas com menos de 30% de todas as esp\'e9cies do subconjunto ter\'e3o alpha=0.05; C\'e9lulas com 30%~69% de todas as esp\'e9cies do subconjunto ter\'e3o alpha=0.3; C\'e9lulas com mais 70% ou mais de todas as esp\'e9cies do subconjunto ter\'e3o alpha=0.7. \
+\
+
+\f1\b grp		
+\f0\b0 Argumento l\'f3gico. Se grp=TRUE a fun\'e7\'e3o salva automaticamente todas os subconjuntos de grid formados em um arquivo .shp e cria a coluna cod.areas no arquivo para que o shapefile possa ser classificado atrav\'e9s dessa coluna e a visualiza\'e7\'e3o dos subconjuntos possa ser individualizada em um programa de Sistema de Informa\'e7\'e3o Geogr\'e1fica (e.g.: QGIS, ArcGis).\
+\
+\
+\cf2 Details :\cf0 \
+\
+A fun\'e7\'e3o mapar apresenta uma parte interativa que visa ampliar as op\'e7\'f5es de escolha d@ usu\'e1ri@ para visualiza\'e7\'e3o dos subconjuntos de pol\'edgonos (\'e1reas de distribui\'e7\'e3o das esp\'e9cies de interesse) formados e para salvar individualmente os subconjuntos de interesse em formato .shp. As intera\'e7\'f5es que demandam respostas do tipo sim/n\'e3o (\'92s/n\'92) aceitam apenas essas respostas para continuar ou interromper a fun\'e7\'e3o, enquanto que as intera\'e7\'f5es relacionadas aos subconjuntos formados dependem da quantidade de subconjuntos formados. Quando grp=FALSE @ usu\'e1ri@ tem a op\'e7\'e3o de salvar \'e1reas individualmente digitando um n\'famero inteiro que representa a posi\'e7\'e3o do subconjunto na lista de subconjuntos formados, ou respondendo \'91todas\'92 para salvar todos os subconjuntos mas em arquivos .shp separados.\
+\
+\cf2 Value :\cf0 \
+\
+
+\f1\b Se prop=FALSE, mapar retorna uma lista com dois componentes:
+\f0\b0  \
+\
+  comp1 : Lista de comprimento=N contendo as matrizes de presen\'e7a e aus\'eancia individuais para cada subconjunto de pol\'edgonos (\'e1reas de interesse) apenas com as esp\'e9cies selecionadas para formar as respectivas N \'e1reas\
+\
+  comp2 : Lista de comprimento=N contendo objetos da classe SpatialPolygonsDataFrame representando os N subconjuntos de pol\'edgonos (\'e1reas de interesse) formados\
+\
+
+\f1\b Se prop=TRUE, mapar retorna uma lista contendo os dois componentes acima mais:
+\f0\b0 \
+  \
+  comp3 : Lista de comprimento=N contendo vetores com os valores de alpha (col=rgb(r, g, b, alpha) por pol\'edgono do grid formado, respeitando a propor\'e7\'e3o n/m descrita em prop (acima)\
+\
+\cf2 Warning :\cf0 \
+\
+a) mapar atribui a colnames(mpa) os \'91id\'92 do objeto grid, \'e9 responsabilidade d@ usu\'e1ri@ garantir que a matriz mpa tenha sido elaborada a partir do grid usado na fun\'e7\'e3o ou as \'e1reas formadas podem n\'e3o representar o resultado esperado pel@ usu\'e1ri@\
+\
+b) Ao salvar um subconjunto de pol\'edgonos em .shp, mapar usa uma nomenclatura padr\'e3o, caso existam outros arquivos com o mesmo nome no diret\'f3rio de trabalho a \'e1rea n\'e3o ser\'e1 salva e uma mensagem de erro padr\'e3o ser\'e1 exibida\
+\
+\cf2 Author(s) :\cf0 \
+\
+    	Vieira-Alencar, Jo\'e3o Paulo dos Santos\
+	Laborat\'f3rio de Ecologia, Evolu\'e7\'e3o e Conserva\'e7\'e3o de Vertebrados, Departamento de Ecologia, Universidade de S\'e3o Paulo, S\'e3o Paulo/SP - BRASIL\
+\
+\
+\cf2 See also :\cf0 \
+\
+     class: SpatialPolygonsDataFrame\
+\
+\cf2 Examples :\cf0 \
+\
+     ## Arquivos de exemplo disponibilizados no wiki do autor.}
