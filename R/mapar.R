@@ -21,18 +21,6 @@
 
 mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FALSE) #naming function and setting defauts
 {
-#  if(require(gtools) == FALSE)
-#  {
-#    install.packages("gtools")
-#    library(gtools)
-#  }
-# 
-#   if(require(rgdal) == FALSE)
-#  {
-#    install.packages("rgdal")
-#    library(rgdal)
-#  }
-  
   #modifying essential data for properly functioning
   colnames(mpa) <- sort(as.numeric(as.character(grid@data[["id"]]))) #attributing grid IDs to presence-absence matrix colnames
   lsp[1] <- as.character(lsp[,1]) #attributing "character" class to species column
