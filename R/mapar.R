@@ -124,26 +124,26 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
           {
             if(is.character(lsp[,2])==TRUE) #conditional to "character" areas codes
             {
-              sf::plot(shp, main=paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              sf::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
+              base::plot(shp, main=paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
+              base::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }else{ #contional to "numeric" areas codes
-              sf::plot(shp, main=paste('Area', sort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              sf::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
+              base::plot(shp, main=paste('Area', sort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
+              base::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }
           }else{ #contitional TO PLOT species percentages
             if(is.character(lsp[,2])==TRUE) #conditional to "character" areas codes
             {  
-              sf::plot(shp, main=paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              sf::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]@data[["id"]], names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
+              base::plot(shp, main=paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
+              base::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]@data[["id"]], names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }else{ #contional to "numeric" areas codes
-              sf::plot(shp, main=paste('Area', sort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              sf::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]@data[["id"]], names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
+              base::plot(shp, main=paste('Area', sort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
+              base::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]@data[["id"]], names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }
