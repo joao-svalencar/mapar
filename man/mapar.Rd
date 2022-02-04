@@ -26,7 +26,7 @@ mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FA
 \item{grp}{a logical value that indicates whether user wants to export ALL BEs in a unique .shp file. FALSE leads to an interactive question on which specific BE the user would like to export. User may choose between one and the number of total BEs detected. If user wants to save ALL BEs as SEPARATED .shp files please, answer "all" (without quotation marks) to that question.}
 }
 \value{
-
+soon...
 }
 \description{
 mapar

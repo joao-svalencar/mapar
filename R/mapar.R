@@ -15,7 +15,7 @@
 #' @param grp a logical value that indicates whether user wants to export ALL BEs in a unique .shp file. FALSE leads to an interactive question on which specific BE the user would like to export. User may choose between one and the number of total BEs detected. If user wants to save ALL BEs as SEPARATED .shp files please, answer "all" (without quotation marks) to that question.
 #' @details testing...
 #' @seealso class: SpatialPolygonDataFrame
-#' @return 
+#' @return soon...
 #' @export
 #'
 
