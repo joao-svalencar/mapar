@@ -123,7 +123,7 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
       stop("study area .shp file not detected, fix to continue") #stops function and gives a warning
     }else{
       
-      par(mar=c(0.1,0.1,1,0.1)) #adjusting plot margins
+      graphics::par(mar=c(0.1,0.1,1,0.1)) #adjusting plot margins
       
       Q2='y' #defining "while" cycle
       while(Q2 == 'y'| Q2 == 'Y') #Does user want to preview another area?
@@ -137,12 +137,12 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
             if(is.character(lsp[,2])==TRUE) #conditional to "character" areas codes
             {
               plot(shp, main=paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
+              plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }else{ #contional to "numeric" areas codes
               plot(shp, main=paste('Area', sort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
+              plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }
@@ -150,12 +150,12 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
             if(is.character(lsp[,2])==TRUE) #conditional to "character" areas codes
             {  
               plot(shp, main=paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]@data[["id"]], names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
+              plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]@data[["id"]], names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }else{ #contional to "numeric" areas codes
               plot(shp, main=paste('Area', sort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]@data[["id"]], names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
+              plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]@data[["id"]], names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }
@@ -201,7 +201,7 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
     }
     allar@data$cod.areas <-  df.info #creates a new column to combined areas SpatialPolygonsDataFrame and attributes the data created above to column "cod.areas"
     
-    writeOGR(allar, dsn=getwd(), layer = 'map.areas', driver="ESRI Shapefile") #saves object as a .shp file with a column to classify and edit areas
+    rgdal::writeOGR(allar, dsn=getwd(), layer = 'map.areas', driver="ESRI Shapefile") #saves object as a .shp file with a column to classify and edit areas
     paste(cat('\nAll areas saved in a unique .shp file named map.areas.shp \n\nMapar finished\n\n')) #informs that a .shp file was created and announces the end of user interaction
     
   }else{#conditional to save areas in separated .shp files
@@ -220,23 +220,23 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
           {
             for(i in 1:length(map.ar)) #creates looping of length equals to total areas number
             {
-            writeOGR(map.ar[[i]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[i], sep=' '), driver="ESRI Shapefile") #creates individual .shp files to each area
+            rgdal::writeOGR(map.ar[[i]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[i], sep=' '), driver="ESRI Shapefile") #creates individual .shp files to each area
             }
           paste(cat('\nAll areas saved as separated .shp files \n\nMapar finished\n\n')) #informs that a .shp file was created to each area separately and announces the end of user interaction
           }else{#conditional to "numeric" areas codes
             for(i in 1:length(map.ar)) #creates looping of length equals to total areas number
             {
-              writeOGR(map.ar[[i]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[i], sep=' '), driver="ESRI Shapefile") #creates individual .shp files to each area
+              rgdal::writeOGR(map.ar[[i]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[i], sep=' '), driver="ESRI Shapefile") #creates individual .shp files to each area
             }
           paste(cat('\nAll areas saved as separated .shp files \n\nMapar finalizada\n\n')) #informs that a .shp file was created to each area separately and announces the end of user interaction
           }
       }else{#conditional to areas saved individually
         if(is.character(lsp[,2])==TRUE)#conditional to "character" areas codes
           {
-          writeOGR(map.ar[[as.numeric(Q4)]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), driver="ESRI Shapefile") #creates .shp file with area choosen
+          rgdal::writeOGR(map.ar[[as.numeric(Q4)]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), driver="ESRI Shapefile") #creates .shp file with area choosen
           paste(cat(paste('\nArea', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), 'saved as .shp file', '\n\nMapar finished\n\n')) #informs which area was saved individually and announces the end of user interaction
           }else{#conditional to "numeric" areas codes
-        writeOGR(map.ar[[as.numeric(Q4)]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), driver="ESRI Shapefile") #creates .shp file with area choosen
+        rgdal::writeOGR(map.ar[[as.numeric(Q4)]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), driver="ESRI Shapefile") #creates .shp file with area choosen
         paste(cat(paste('\nArea', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), 'saved as .shp file', '\n\nMapar finished\n\n')) #informs which area was saved individually and announces the end of user interaction
         }
       }
