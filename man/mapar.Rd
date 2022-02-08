@@ -38,7 +38,7 @@ If \code{prop = TRUE}, '\emph{mapar}' returns a list with three components, the 
 }
 }
 \description{
-This package have been developed to ease the decision making process for the mapping steps of the Biotic Element Analysis (BEA) outputs.
+Preview Biotic Element Analysis (BEA) outputs in R and export .shp files for further edition and mapping.
 }
 \details{
 BEA output preview through '\emph{mapar}' demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to 'noise component' (identifyed as "0" in the data.frame). If user wants to remove the 'noise component' species prior to running '\emph{mapar}' please use de code:\preformatted{mpa <- mpa[lsp[,1][lsp[,2]!=0],] #removes noise component species from matrix 'mpa' 
