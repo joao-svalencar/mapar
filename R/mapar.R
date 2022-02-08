@@ -3,6 +3,7 @@
 ##########################################################################################################
 
 #' Mapping Biotic Elements in R 
+#' @description This package have been developed to ease the decision making process for the mapping steps of the Biotic Element Analysis outputs.
 #' @usage mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FALSE)
 #' @param grid SpatialPolygonDataFrame object with a system of grid cells that represents a given study area.
 #' @param mpa presence-absence matrix with species names in the rows and grid IDs in the columns (Note that grid IDs must match between grid system and presence-absence matrix).
