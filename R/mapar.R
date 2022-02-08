@@ -22,7 +22,7 @@
 #' ````
 #' Note that if you want to change the data frame (Ex.: providing a different clustering output), you will have to also reaload 'mpa', as '*noise component*' species may vary between different clustering results.
 #' 
-#' Warning
+#' ## Warning
 #' 
 #' * '_mapar_' requires packages '_gtools_' and '_rgdal_'.
 #' * '_mapar_' attributes to _colnames(mpa)_ the IDs found in the grid system provided. It is the user's responsability to assure that the presence-abscence matrix was created based on the grid system provided or results might not represent the actual outcome.
