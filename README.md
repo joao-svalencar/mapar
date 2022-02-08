@@ -1,7 +1,5 @@
-# 'mapar'
+# mapar
 ### ***Mapping Biotic Elements in R***
-
-*First published version released on November 25th of 2020.*
 
 This function allows users to preview in R environment the Biotic Element Analysis (BEA - [Hausdorf & Hennig, 2003](https://doi.org/10.1080/10635150390235584)) output in a easy interactive way. Additionally, users may save the output as a .shp file for further edition in GIS softwares.
 
@@ -78,9 +76,18 @@ If prop = TRUE, '*mapar*' returns a list with three components, the two mentione
 
 Files and codes will be provided further
 
+### Download 
+
+To install the development version of this package the user must run:
+
+```{.r}
+# install.packages("devtools")
+devtools::install_github("joao-svalencar/mapar", ref="main")
+```
+
 ### ***Aknowledgements***
 
-The author thanks Professor Alexandre Adalardo de Oliveira for high quality classes in R programming. Bruno Travassos de Britto, Filipe Alexandre Cabreirinha Serrano and Juan Camilo Diaz-Ricaurte provided insightful comments and valuable suggestions that improved the function. The author is funded by the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - Brasil (CAPES) - Finance Code 001.
+I would like to thank Professor Alexandre Adalardo de Oliveira for high quality classes in R programming. Bruno Travassos de Britto, Filipe Alexandre Cabreirinha Serrano and Juan Camilo Diaz-Ricaurte provided insightful comments and valuable suggestions that improved the function. Finally, I would like to thank Professor Ricardo Jannini Sawaya for exposing the problem and highlighting the importance of this package. The author is funded by the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - Brasil (CAPES) - Finance Code 001.
 
 ### ***Author:***
 
