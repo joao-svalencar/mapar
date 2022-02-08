@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapar.R
 \name{mapar}
 \alias{mapar}
-\title{mapar}
+\title{Mapping Biotic Elements in R}
 \usage{
 mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FALSE)
 }
@@ -26,13 +26,29 @@ mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FA
 \item{grp}{a logical value that indicates whether user wants to export ALL BEs in a unique .shp file. FALSE leads to an interactive question on which specific BE the user would like to export. User may choose between one and the number of total BEs detected. If user wants to save ALL BEs as SEPARATED .shp files please, answer "all" (without quotation marks) to that question.}
 }
 \value{
-If prop = FALSE, '\emph{mapar}' returns a list with two components: \n \strong{comp1:} List of length N containing individual presence-absence matrices for N BEs. \n \strong{comp2:} List of length N containing individual '\emph{SpatialPolygonsDataFrame}' objects related to N BEs. \n\nIf prop = TRUE, '\emph{mapar}' returns a list with three components, the two mentioned above and: \n* \strong{comp3:} List of length N containing vectors with '\emph{alpha}' values (\emph{col=rgd(r, g, b, alpha)}) related to individual species proportion per grid cell (0.05 for cells with <30\%, 0.3 for cells with 30\%-70\%, 0.7 for cells with <70\%. see '\emph{prop}') for N BEs.
+If prop = FALSE, '\emph{mapar}' returns a list with two components:
+\itemize{
+\item comp1: List of length N containing individual presence-absence matrices for N BEs.
+\item comp2: List of length N containing individual '\emph{SpatialPolygonsDataFrame}' objects related to N BEs.
+}
+
+If prop = TRUE, '\emph{mapar}' returns a list with three components, the two mentioned above and:
+\itemize{
+\item comp3: List of length N containing vectors with '\emph{alpha}' values (\code{col=rgd(r, g, b, alpha)}) related to individual species proportion per grid cell (0.05 for cells with <30\%, 0.3 for cells with 30\%-70\%, 0.7 for cells with <70\%. see '\emph{prop}') for N BEs.
+}
 }
 \description{
-mapar
+Mapping Biotic Elements in R
 }
 \details{
-BEA output preview through '\emph{mapar}' demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to 'noise component' (identifyed as "0" in the data.frame). If user wants to remove the '\emph{noise component}' species prior to running '\emph{mapar}' please use de code: \n mpa <- mpa[lsp[,1][lsp\link{,2}!=0],] #removes noise component species from matrix 'mpa' \n lsp <- lsp[lsp\link{2}!=0,] #removes noise component species from data.frame 'lsp' \n Note that if you want to change the data frame (Ex.: providing a different clustering output), you will have to also reaload 'mpa', as '\emph{noise component}' species may vary between different clustering results.
+BEA output preview through '\emph{mapar}' demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to 'noise component' (identifyed as "0" in the data.frame). If user wants to remove the '\emph{noise component}' species prior to running '\emph{mapar}' please use de code:\preformatted{mpa <- mpa[lsp[,1][lsp[,2]!=0],] #removes noise component species from matrix 'mpa' 
+lsp <- lsp[lsp[2]!=0,] #removes noise component species from data.frame 'lsp' 
+}
+
+Note that if you want to change the data frame (Ex.: providing a different clustering output), you will have to also reaload 'mpa', as '\emph{noise component}' species may vary between different clustering results.
+}
+\references{
+Hausdorf, B. & Hennig, C. (2003) Biotic Element Analysis in Biogeography. \emph{Systematic Biology}, 52(5):717-723 https://doi.org/10.1080/10635150390235584
 }
 \seealso{
 class: SpatialPolygonDataFrame

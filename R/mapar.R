@@ -22,6 +22,12 @@
 #' ````
 #' Note that if you want to change the data frame (Ex.: providing a different clustering output), you will have to also reaload 'mpa', as '*noise component*' species may vary between different clustering results.
 #' 
+#' Warning
+#' 
+#' * '_mapar_' requires packages '_gtools_' and '_rgdal_'.
+#' * '_mapar_' attributes to _colnames(mpa)_ the IDs found in the grid system provided. It is the user's responsability to assure that the presence-abscence matrix was created based on the grid system provided or results might not represent the actual outcome.
+#' * '_mapar_' uses a standard nomenclature based on BEs codes (provided in '_lsp_') to save .shp files. If the working directory already has a file with the same name (Ex.: after a previous '_mapar_' run) the new outcome will not be saved and the fuction will deliver an error message. The same happens if grp = TRUE and there are multiple runs.
+#' 
 #' @seealso class: SpatialPolygonDataFrame
 #' 
 #' @return If prop = FALSE, '*mapar*' returns a list with two components:
