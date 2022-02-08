@@ -1,4 +1,5 @@
 # 'mapar'
+### ***Mapping Biotic Elements in R***
 
 *First published version released on November 25th of 2020.*
 
@@ -38,7 +39,7 @@ mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FA
 
 **nsp**       a numerical value that indicates the minimum number of species required to preview a given grid cell. Ex.: If user wants to preview only the BE cells that have AT LEAST two species, nsp value should be 2
 
-**grp**       a logical value that indicates whether user wants to export ALL BEs in a unique .shp file. FALSE leads to an interactive question on which specific BE the user would like to export. User may choose between one and the number of total BEs detected. If user wants to save ALL BEs as SEPARATED .shp files please, answer "all"  (without quotation marks) to that question.
+**grp**       a logical value that indicates whether user wants to export ALL BEs in a unique .shp file. FALSE leads to an interactive question on which specific BE the user would like to export. User may choose between one and the number of total BEs detected. If user wants to save ALL BEs as SEPARATED .shp files the answer "all"  (without quotation marks) should be given to that question.
 
 ### ***Details:***
 
@@ -64,7 +65,7 @@ If prop = TRUE, '*mapar*' returns a list with three components, the two mentione
 
 ### ***Warning:***
 
-* '*mapar*' requires packages '*gtools*' and '*rgdal*'. If these packages are not installed and loaded, '*mapar*' will install and load them in the first run and warning messages will be delivered when it finish. Subsequent runs should not deliver warning messages related to these packages.
+* '*mapar*' requires packages '*gtools*' and '*rgdal*'.
 
 * '*mapar*' attributes to *colnames(mpa)* the IDs found in the grid system provided. It is the user's responsability to assure that the presence-abscence matrix was created based on the grid system provided or results might not represent the actual outcome. 
 

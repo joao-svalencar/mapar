@@ -13,9 +13,9 @@
 #' @param propcut a numerical value between zero and one that indicates whether user wants to "cut" BEs preview to a especified proportion of species. Ex.: If user wants to see only cells that contain MORE than 30% of species, propcut value should be 0.3.
 #' @param nsp a numerical value that indicates the minimum number of species required to preview a given grid cell. Ex.: If user wants to preview only the BE cells that have AT LEAST two species, nsp value should be 2.
 #' @param grp a logical value that indicates whether user wants to export ALL BEs in a unique .shp file. FALSE leads to an interactive question on which specific BE the user would like to export. User may choose between one and the number of total BEs detected. If user wants to save ALL BEs as SEPARATED .shp files please, answer "all" (without quotation marks) to that question.
-#' @details testing...
+#' @details BEA output preview through '*mapar*' demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to 'noise component' (identifyed as "0" in the data.frame). If user wants to remove the '*noise component*' species prior to running '*mapar*' please use de code: \n mpa <- mpa[lsp[,1][lsp[,2]!=0],] #removes noise component species from matrix 'mpa' \n lsp <- lsp[lsp[2]!=0,] #removes noise component species from data.frame 'lsp' \n Note that if you want to change the data frame (Ex.: providing a different clustering output), you will have to also reaload 'mpa', as '*noise component*' species may vary between different clustering results.
 #' @seealso class: SpatialPolygonDataFrame
-#' @return soon...
+#' @return If prop = FALSE, '*mapar*' returns a list with two components: \n **comp1:** List of length N containing individual presence-absence matrices for N BEs. \n **comp2:** List of length N containing individual '*SpatialPolygonsDataFrame*' objects related to N BEs. \n\nIf prop = TRUE, '*mapar*' returns a list with three components, the two mentioned above and: \n* **comp3:** List of length N containing vectors with '*alpha*' values (*col=rgd(r, g, b, alpha)*) related to individual species proportion per grid cell (0.05 for cells with <30%, 0.3 for cells with 30%-70%, 0.7 for cells with <70%. see '*prop*') for N BEs.
 #' @export
 #'
 
