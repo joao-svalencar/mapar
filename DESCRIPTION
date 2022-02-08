@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "joaopaulo.valencar@usp.br",
            comment = c(ORCID = "https://orcid.org/0000-0001-6894-6773"))
-Description: This package have been developed to ease the decision making process for the mapping steps of the Biotic Element Analysis outputs.
+Description: This package have been developed to ease the decision making process for the mapping steps of the Biotic Element Analysis (BEA) outputs.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

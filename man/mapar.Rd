@@ -7,21 +7,21 @@
 mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FALSE)
 }
 \arguments{
-\item{grid}{SpatialPolygonDataFrame object with a system of grid cells that represents a given study area.}
+\item{grid}{\emph{SpatialPolygonDataFrame} object with a system of grid cells that represents a given study area.}
 
-\item{mpa}{presence-absence matrix with species names in the rows and grid IDs in the columns (Note that grid IDs must match between grid system and presence-absence matrix).}
+\item{mpa}{presence-absence \emph{matrix} with species names in the rows and grid IDs in the columns (Note that grid IDs must match between grid system and presence-absence matrix).}
 
-\item{lsp}{data.frame with two columns. The first column must have species names, the second column must have BEs codes (Note that species names must match between presence-absence matrix and the data frame).}
+\item{lsp}{\emph{data.frame} with two columns. The first column must have species names, the second column must have BEs codes (Note that species names must match between presence-absence matrix and the data frame).}
 
 \item{plot}{a logical value indicating whether the user wants to preview BEs in R. FALSE leads directly to the interactive decision on to save or not BEs as .shp files.}
 
-\item{shp}{SpatialPolygonDataFrame object representing the limits of study area (required if plot = TRUE).}
+\item{shp}{\emph{SpatialPolygonDataFrame} object representing the limits of study area (required if plot = TRUE).}
 
 \item{prop}{a logical value indicating whether the user wants to preview proportions of species per grid cell. Default settings shows cells with <30\% of species, 30\%-70\% of species and >70\% of species. A further version will allow users to decide the proportions they want to visualize.}
 
-\item{propcut}{a numerical value between zero and one that indicates whether user wants to "cut" BEs preview to a especified proportion of species. Ex.: If user wants to see only cells that contain MORE than 30\% of species, propcut value should be 0.3.}
+\item{propcut}{a numerical value between zero and one that indicates whether user wants to "cut" BEs preview to a specified proportion of species. Ex.: If user wants to see only cells that contain MORE than 30\% of species, \code{propcut} value should be 0.3.}
 
-\item{nsp}{a numerical value that indicates the minimum number of species required to preview a given grid cell. Ex.: If user wants to preview only the BE cells that have AT LEAST two species, nsp value should be 2.}
+\item{nsp}{a numerical value that indicates the minimum number of species required to preview a given grid cell. Ex.: If user wants to preview only the BE cells that have AT LEAST two species, \code{nsp} value should be 2.}
 
 \item{grp}{a logical value that indicates whether user wants to export ALL BEs in a unique .shp file. FALSE leads to an interactive question on which specific BE the user would like to export. User may choose between one and the number of total BEs detected. If user wants to save ALL BEs as SEPARATED .shp files please, answer "all" (without quotation marks) to that question.}
 }
@@ -29,28 +29,27 @@ mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FA
 If prop = FALSE, '\emph{mapar}' returns a list with two components:
 \itemize{
 \item comp1: List of length N containing individual presence-absence matrices for N BEs.
-\item comp2: List of length N containing individual '\emph{SpatialPolygonsDataFrame}' objects related to N BEs.
+\item comp2: List of length N containing individual \emph{SpatialPolygonsDataFrame} objects related to N BEs.
 }
 
-If prop = TRUE, '\emph{mapar}' returns a list with three components, the two mentioned above and:
+If \code{prop = TRUE}, '\emph{mapar}' returns a list with three components, the two mentioned above and:
 \itemize{
-\item comp3: List of length N containing vectors with '\emph{alpha}' values (\code{col=rgd(r, g, b, alpha)}) related to individual species proportion per grid cell (0.05 for cells with <30\%, 0.3 for cells with 30\%-70\%, 0.7 for cells with <70\%. see '\emph{prop}') for N BEs.
+\item comp3: List of length N containing vectors with \emph{alpha} values (\code{col=rgd(r, g, b, alpha)}) related to individual species proportion per grid cell (0.05 for cells with <30\%, 0.3 for cells with 30\%-70\%, 0.7 for cells with <70\%. see \code{prop}) for N BEs.
 }
 }
 \description{
-This package have been developed to ease the decision making process for the mapping steps of the Biotic Element Analysis outputs.
+This package have been developed to ease the decision making process for the mapping steps of the Biotic Element Analysis (BEA) outputs.
 }
 \details{
-BEA output preview through '\emph{mapar}' demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to 'noise component' (identifyed as "0" in the data.frame). If user wants to remove the '\emph{noise component}' species prior to running '\emph{mapar}' please use de code:\preformatted{mpa <- mpa[lsp[,1][lsp[,2]!=0],] #removes noise component species from matrix 'mpa' 
+BEA output preview through '\emph{mapar}' demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to 'noise component' (identifyed as "0" in the data.frame). If user wants to remove the 'noise component' species prior to running '\emph{mapar}' please use de code:\preformatted{mpa <- mpa[lsp[,1][lsp[,2]!=0],] #removes noise component species from matrix 'mpa' 
 lsp <- lsp[lsp[2]!=0,] #removes noise component species from data.frame 'lsp' 
 }
 
-Note that if you want to change the data frame (Ex.: providing a different clustering output), you will have to also reaload 'mpa', as '\emph{noise component}' species may vary between different clustering results.
+Note that if you want to change the data frame (Ex.: providing a different clustering output), you will have to also reload 'mpa', as 'noise component' species may vary between different clustering results.
 \subsection{Warning}{
 \itemize{
-\item '\emph{mapar}' requires packages '\emph{gtools}' and '\emph{rgdal}'.
-\item '\emph{mapar}' attributes to \emph{colnames(mpa)} the IDs found in the grid system provided. It is the user's responsability to assure that the presence-abscence matrix was created based on the grid system provided or results might not represent the actual outcome.
-\item '\emph{mapar}' uses a standard nomenclature based on BEs codes (provided in '\emph{lsp}') to save .shp files. If the working directory already has a file with the same name (Ex.: after a previous '\emph{mapar}' run) the new outcome will not be saved and the fuction will deliver an error message. The same happens if grp = TRUE and there are multiple runs.
+\item '\emph{mapar}' attributes to \code{colnames(mpa)} the IDs found in the grid system provided. It is the user's responsibility to assure that the presence-absence matrix was created based on the grid system provided or results might not represent the actual outcome.
+\item '\emph{mapar}' uses a standard nomenclature based on BEs codes (provided in 'lsp') to save .shp files. If the working directory already has a file with the same name (Ex.: after a previous '\emph{mapar}' run) the new outcome will not be saved and the fuction will deliver an error message. The same happens if \code{grp = TRUE} and there are multiple runs.
 }
 }
 }
@@ -58,5 +57,5 @@ Note that if you want to change the data frame (Ex.: providing a different clust
 Hausdorf, B. & Hennig, C. (2003) Biotic Element Analysis in Biogeography. \emph{Systematic Biology}, 52(5):717-723 https://doi.org/10.1080/10635150390235584
 }
 \seealso{
-class: SpatialPolygonDataFrame
+class: \emph{SpatialPolygonDataFrame}
 }

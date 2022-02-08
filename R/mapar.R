@@ -3,7 +3,7 @@
 ##########################################################################################################
 
 #' Mapping Biotic Elements in R 
-#' @description This package have been developed to ease the decision making process for the mapping steps of the Biotic Element Analysis (BEA) outputs.
+#' @description Preview Biotic Element Analysis (BEA) outputs in R and export .shp files for further edition and mapping.
 #' @usage mapar(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FALSE)
 #' @param grid _SpatialPolygonDataFrame_ object with a system of grid cells that represents a given study area.
 #' @param mpa presence-absence _matrix_ with species names in the rows and grid IDs in the columns (Note that grid IDs must match between grid system and presence-absence matrix).
