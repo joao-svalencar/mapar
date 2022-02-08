@@ -46,12 +46,12 @@ lsp <- lsp[lsp[2]!=0,] #removes noise component species from data.frame 'lsp'
 }
 
 Note that if you want to change the data frame (Ex.: providing a different clustering output), you will have to also reaload 'mpa', as '\emph{noise component}' species may vary between different clustering results.
-
-Warning
+\subsection{Warning}{
 \itemize{
 \item '\emph{mapar}' requires packages '\emph{gtools}' and '\emph{rgdal}'.
 \item '\emph{mapar}' attributes to \emph{colnames(mpa)} the IDs found in the grid system provided. It is the user's responsability to assure that the presence-abscence matrix was created based on the grid system provided or results might not represent the actual outcome.
 \item '\emph{mapar}' uses a standard nomenclature based on BEs codes (provided in '\emph{lsp}') to save .shp files. If the working directory already has a file with the same name (Ex.: after a previous '\emph{mapar}' run) the new outcome will not be saved and the fuction will deliver an error message. The same happens if grp = TRUE and there are multiple runs.
+}
 }
 }
 \references{
