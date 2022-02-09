@@ -2,8 +2,11 @@
 ########################### function cdn by:  JP VIEIRA-ALENCAR  #########################################
 ##########################################################################################################
 
-#' cutdist/nnout table
+#' cutdist/nnout table for hierarchical clustering method `prabclus::hprabclust`
 #'
+#' @description `cdn()` has been developed to improve the process of analysing different combinations of _cutdist_ and _nnout_ values passed to `prabclus::hprabclust()`, the hierarchical clustering method applied in Biotic Element Analyses
+#' @usage cdn(x= NULL, cd=c(0.1, 0.5, 0.05), n=c(1, 5), spp_list=NULL, 
+#' cutout=1, method="average", mdsmethod="classical")
 #' @param x A _prab_ object obtained from `prabclus::prabinit`.
 #' @param cd A vector containing three numerical objects to be passed to `seq(from, to, by)` as: 1. (from) smaller cutdist value, 2. (to) larger cutdist value, and 3. increment of the sequence.
 #' @param n A vector containing two numerical objects to be passed to `seq(from,to)` as: 1. (from) smaller nnout value, 2. (to) larger nnout value.
@@ -60,13 +63,13 @@ cdn <- function(x= NULL, cd=c(0.1, 0.5, 0.05), n=c(1, 5), spp_list=NULL, cutout=
       {
           for(i in cdist)
           {
-            hier <- hprabclust(x, cutdist = i, cutout=cutout, method=method, nnout=nnout[a], mdsplot=FALSE, mdsmethod=mdsmethod)
+            hier <- prabclus::hprabclust(x, cutdist = i, cutout=cutout, method=method, nnout=nnout[a], mdsplot=FALSE, mdsmethod=mdsmethod)
             hier.l <- cbind(spp_list, hier$rclustering)
             for(j in 1:length(cdist))
             {
-              Noise[which(near(cdist, i))] <- table(hier.l[2])[1]
-              BEs[which(near(cdist, i))] <- max(hier.l[2])
-              Prop[which(near(cdist, i))] <- round(table(hier.l[2])[1]/max(hier.l[2]), digits=2)
+              Noise[which(dplyr::near(cdist, i))] <- table(hier.l[2])[1]
+              BEs[which(dplyr::near(cdist, i))] <- max(hier.l[2])
+              Prop[which(dplyr::near(cdist, i))] <- round(table(hier.l[2])[1]/max(hier.l[2]), digits=2)
             }
           }
           cdist_table <- data.frame(Noise, BEs, Prop, null)
