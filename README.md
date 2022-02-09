@@ -21,7 +21,7 @@ For the '*cdn*' function, users just have to provide the *prab* object originate
 
 A brief description of how to use the functions are described in their `help()` section.
 
-### Download 
+### ***Download***
 
 To install the stable version of this package the user must run:
 
