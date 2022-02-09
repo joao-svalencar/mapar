@@ -1,0 +1,80 @@
+##########################################################################################################
+########################### function cdn by:  JP VIEIRA-ALENCAR  #########################################
+##########################################################################################################
+
+#hell yeah
+cdn <- function(x= NULL, cd=c(0.1, 0.5, 0.05), n=c(1, 5), spp_list=NULL, cutout=1, method="average", mdsmethod="classical")
+{
+  ################################################ IFs ERRORS SECTION ####################################################
+  if(is.null(x))
+  {
+    stop("Prab object not found")
+  }
+  
+  if(is.null(spp_list)) #verifying if there are names in matrix rows
+  {
+    stop("No species list found, can't combine with hprabclust result") #stops function and gives a warning
+  }
+  ########################################################################################################################
+
+  ############################################## IFs PARAMETERS SECTION ##################################################
+  if(length(cd)>1)
+  {
+    cdist <- seq(from=cd[1], to=cd[2], by=cd[3])
+  }else{
+    cdist <- cd
+  }
+  
+  if(length(n)>1)
+  {
+    nnout <- seq(from=n[1], to=n[2])
+  }else{
+    nnout <- n
+  }
+  #######################################################################################################################
+  
+  #############################################################################################################################
+  ################################################### FUNCTION DEVELOPMENT ###################################################
+  #############################################################################################################################
+  
+    Noise <- c()
+    BEs <- c()
+    Prop <- c()
+    null <- rep("", times = length(cdist))
+    cdn_table_l <- list()
+    cdn_table_df <- data.frame()
+    for(a in 1:length(nnout))
+      {
+          for(i in cdist)
+          {
+            hier <- hprabclust(x, cutdist = i, cutout=cutout, method=method, nnout=nnout[a], mdsplot=FALSE, mdsmethod=mdsmethod)
+            hier.l <- cbind(spp_list, hier$rclustering)
+            for(j in 1:length(cdist))
+            {
+              Noise[which(near(cdist, i))] <- table(hier.l[2])[1]
+              BEs[which(near(cdist, i))] <- max(hier.l[2])
+              Prop[which(near(cdist, i))] <- round(table(hier.l[2])[1]/max(hier.l[2]), digits=2)
+            }
+          }
+          cdist_table <- data.frame(Noise, BEs, Prop, null)
+          cdist_table <- t(cdist_table)
+          colnames(cdist_table) <- cdist
+          
+          ### list to print ###
+          cdn_table_l[[a]] <- cdist_table[-4,]
+          names(cdn_table_l)[[a]] <- paste("NNOUT=", nnout[a], sep='')
+          
+          ### df to return ###
+          row.names(cdist_table) <- c(paste("Noise", "[", a, "]"), 
+                                      paste("BEs", "[", a, "]"), 
+                                      paste("Prop", "[", a, "]"), 
+                                      paste("NNOUT", a, "#######"))
+          cdn_table_df <- rbind(cdn_table_df, cdist_table)
+    }
+    print(cdn_table_l)
+    return(cdn_table_l)
+}
+
+#############################################################################################################################
+###################################################### END OF FUNCTION ######################################################
+#############################################################################################################################
