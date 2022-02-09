@@ -2,7 +2,7 @@
 % Please edit documentation in R/cdn.R
 \name{cdn}
 \alias{cdn}
-\title{cutdist/nnout table for hierarchical clustering method \code{prabclus::hprabclust}}
+\title{cutdist/nnout table for hierarchical clustering method}
 \usage{
 cdn(x= NULL, cd=c(0.1, 0.5, 0.05), n=c(1, 5), spp_list=NULL, 
 cutout=1, method="average", mdsmethod="classical")

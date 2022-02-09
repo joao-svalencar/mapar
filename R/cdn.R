@@ -2,7 +2,7 @@
 ########################### function cdn by:  JP VIEIRA-ALENCAR  #########################################
 ##########################################################################################################
 
-#' cutdist/nnout table for hierarchical clustering method `prabclus::hprabclust`
+#' cutdist/nnout table for hierarchical clustering method
 #'
 #' @description `cdn()` has been developed to improve the process of analysing different combinations of _cutdist_ and _nnout_ values passed to `prabclus::hprabclust()`, the hierarchical clustering method applied in Biotic Element Analyses
 #' @usage cdn(x= NULL, cd=c(0.1, 0.5, 0.05), n=c(1, 5), spp_list=NULL, 
