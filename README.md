@@ -30,7 +30,7 @@ To install the stable version of this package the user must run:
 devtools::install_github("joao-svalencar/mapar", ref="main")
 ```
 
-### Next steps
+### ***Next steps***
 
 - [ ] CRAN release
 - [ ] Implement compatibility with *sf* objects
