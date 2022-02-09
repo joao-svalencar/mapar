@@ -16,7 +16,7 @@
 #' @param grp a logical value that indicates whether user wants to export ALL BEs in a unique .shp file. FALSE leads to an interactive question on which specific BE the user would like to export. User may choose between one and the number of total BEs detected. If user wants to save ALL BEs as SEPARATED .shp files please, answer "all" (without quotation marks) to that question.
 #' 
 #' @details 
-#' BEA output preview through '*mapar*' demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to 'noise component' (identifyed as "0" in the data.frame). If user wants to remove the 'noise component' species prior to running '*mapar*' please use de code: 
+#' BEA output preview through '*mapar*' demands user interaction. Questions are associated to the number of BEs detected or are of yes/no type. Note that BEA output usually has species assigned to 'noise component' (identifyed as "0" in the data.frame). If user wants to remove the 'noise component' species prior to running '*mapar*' please run: 
 #' ````
 #' mpa <- mpa[lsp[,1][lsp[,2]!=0],] #removes noise component species from matrix 'mpa' 
 #' lsp <- lsp[lsp[2]!=0,] #removes noise component species from data.frame 'lsp' 
