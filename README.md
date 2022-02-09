@@ -23,7 +23,7 @@ A brief description of how to use the functions are described in their '*help()*
 
 ### Download 
 
-To install the development version of this package the user must run:
+To install the stable version of this package the user must run:
 
 ```{.r}
 # install.packages("devtools")
