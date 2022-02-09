@@ -2,7 +2,20 @@
 ########################### function cdn by:  JP VIEIRA-ALENCAR  #########################################
 ##########################################################################################################
 
-#hell yeah
+#' cutdist/nnout table
+#'
+#' @param x A _prab_ object obtained from `prabclus::prabinit`.
+#' @param cd A vector containing three numerical objects to be passed to `seq(from, to, by)` as: 1. (from) smaller cutdist value, 2. (to) larger cutdist value, and 3. increment of the sequence.
+#' @param n A vector containing two numerical objects to be passed to `seq(from,to)` as: 1. (from) smaller nnout value, 2. (to) larger nnout value.
+#' @param spp_list A data frame with one column containg the species names present in the _prab_ object.
+#' @param cutout See _cutout_ in `?prabclus::hprabclust`.
+#' @param method See _method_ in `?prabclus::hprabclust`.
+#' @param mdsmethod See _mdsmethod_ in `?prabclus::hprabclust`.
+#'
+#' @return Returns a data.frame with the number of Biotic Elements and number of species assigned to the noise component for every cutdist/nnout combination given by the sequences created from the values provided in _cd_ and _n_.
+#' @export
+#'
+
 cdn <- function(x= NULL, cd=c(0.1, 0.5, 0.05), n=c(1, 5), spp_list=NULL, cutout=1, method="average", mdsmethod="classical")
 {
   ################################################ IFs ERRORS SECTION ####################################################
