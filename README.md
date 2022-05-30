@@ -1,6 +1,8 @@
 # mapar
 ### ***Mapping Biotic Elements in R***
 
+[![DOI](https://zenodo.org/badge/316021065.svg)](https://zenodo.org/badge/latestdoi/316021065)
+
 This package is currently composed of two functions: '*mapar*' and '*cdn*'.
 
 The function '*mapar*' allows users to preview in R environment the Biotic Element Analysis (BEA - [Hausdorf & Hennig, 2003](https://doi.org/10.1080/10635150390235584)) output in a easy interactive way. Additionally, users may save the output as a .shp file for further edition in GIS softwares.
