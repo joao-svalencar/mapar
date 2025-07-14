@@ -46,7 +46,7 @@
 mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, nsp=1, grp=FALSE) #naming function and setting defauts
 {
   #modifying essential data for properly functioning
-  colnames(mpa) <- sort(as.numeric(as.character(grid@data[["id"]]))) #attributing grid IDs to presence-absence matrix colnames
+  colnames(mpa) <- sort(grid$id) #attributing grid IDs to presence-absence matrix colnames
   lsp[1] <- as.character(lsp[,1]) #attributing "character" class to species column
   
   ###########################################################################################
@@ -76,7 +76,7 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
   {
     stop("Species names differ between mpa and lsp, fix to continue") #stops function and give a warning
   }
-  if(sum(as.numeric(colnames(mpa)) %in% grid@data[['id']])<length(colnames(mpa))) #comparing grid IDs between grid system and mpa
+  if(sum(as.numeric(colnames(mpa)) %in% grid$id)<length(colnames(mpa))) #comparing grid IDs between grid system and mpa
   {
     stop("Grid IDs differ between grid system and mpa, fix to continue") #stops function and give a warning
   }
@@ -93,14 +93,14 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
     for(i in 1:nrow(unique(lsp[2]))) #fills lists with unique areas names
     {
       areas[[i]] <- mpa[as.character(lsp[,1][lsp[,2] == sort(unique(lsp[,2]))[i]]),] #assign distinct species groups to distinct list areas positions
-      map.ar[[i]] <- grid[which(grid@data[["id"]]%in%names(which(apply(areas[[i]], 2, sum)>=nsp))),] #creates individualized grids related to each groups' species occurrences
+      map.ar[[i]] <- grid[which(grid$id %in% names(which(apply(areas[[i]], 2, sum)>=nsp))),] #creates individualized grids related to each groups' species occurrences
     }
   }else{
     
     for(i in 1:nrow(unique(lsp[2]))) #else for character areas codes
     {
       areas[[i]] <- mpa[as.character(lsp[,1][lsp[,2] == gtools::mixedsort(unique(lsp[,2]))[i]]),] #assign distinct species groups to distinct list areas positions
-      map.ar[[i]] <- grid[which(grid@data[["id"]]%in%names(which(apply(areas[[i]], 2, sum)>=nsp))),] #creates individualized grids related to each groups' species occurrences
+      map.ar[[i]] <- grid[which(grid$id %in% names(which(apply(areas[[i]], 2, sum)>=nsp))),] #creates individualized grids related to each groups' species occurrences
     }
   }
   
@@ -148,26 +148,26 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
           {
             if(is.character(lsp[,2])==TRUE) #conditional to "character" areas codes
             {
-              sp::plot(shp, main=paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              sp::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
+              terra::plot(shp, main=paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
+              terra::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }else{ #contional to "numeric" areas codes
-              sp::plot(shp, main=paste('Area', sort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              sp::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
+              terra::plot(shp, main=paste('Area', sort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
+              terra::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, 0.3)) #plots selected area WITHOUT species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }
           }else{ #contitional TO PLOT species percentages
             if(is.character(lsp[,2])==TRUE) #conditional to "character" areas codes
             {  
-              sp::plot(shp, main=paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              sp::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]@data[["id"]], names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
+              terra::plot(shp, main=paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
+              terra::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]$id, names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }else{ #contional to "numeric" areas codes
-              sp::plot(shp, main=paste('Area', sort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
-              sp::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]@data[["id"]], names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
+              terra::plot(shp, main=paste('Area', sort(unique(lsp[,2]))[as.numeric(Q1)], sep=' '), cex.main=1.3) #study area plot
+              terra::plot(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,], add=TRUE, col=grDevices::rgb(0,0,1, alpha=per[[as.numeric(Q1)]][match(map.ar[[as.numeric(Q1)]][map.ar[[as.numeric(Q1)]]$per>=propcut,]$id, names(per[[as.numeric(Q1)]]))])) #plots selected area WITH species percentages/cell; attention to propcut
               cat("\nSpecies composition of Area", gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q1)], ":\n \n")
               print(rownames(areas[[as.numeric(Q1)]])) #preview species composition
             }
@@ -211,9 +211,9 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
         df.info <- c(df.info, rep(paste(gtools::mixedsort(unique(lsp[,2]))[i], sep=' '), times=length(map.ar[[i]]))) #creates vectors with remaining areas codes equivalent to number of grid cells in each area
       }
     }
-    allar@data$cod.areas <-  df.info #creates a new column to combined areas SpatialPolygonsDataFrame and attributes the data created above to column "cod.areas"
+    allar$cod.areas <-  df.info #creates a new column to combined areas SpatialPolygonsDataFrame and attributes the data created above to column "cod.areas"
     
-    rgdal::writeOGR(allar, dsn=getwd(), layer = 'map.areas', driver="ESRI Shapefile") #saves object as a .shp file with a column to classify and edit areas
+    terra::writeVector(allar, filename = 'map_areas.shp', filetype="ESRI Shapefile") #saves object as a .shp file with a column to classify and edit areas
     paste(cat('\nAll areas saved in a unique .shp file named map.areas.shp \n\nMapar finished\n\n')) #informs that a .shp file was created and announces the end of user interaction
     
   }else{#conditional to save areas in separated .shp files
@@ -229,27 +229,27 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
       if(Q4 == 'all' | Q4 == 'ALL' | Q4 == 'All') #conditional to save all areas separately
       {
         if(is.character(lsp[,2])==TRUE) #conditional to "character" areas codes
+        {
+          for(i in 1:length(map.ar)) #creates looping of length equals to total areas number
           {
-            for(i in 1:length(map.ar)) #creates looping of length equals to total areas number
-            {
-            rgdal::writeOGR(map.ar[[i]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[i], sep=' '), driver="ESRI Shapefile") #creates individual .shp files to each area
-            }
-          paste(cat('\nAll areas saved as separated .shp files \n\nMapar finished\n\n')) #informs that a .shp file was created to each area separately and announces the end of user interaction
-          }else{#conditional to "numeric" areas codes
-            for(i in 1:length(map.ar)) #creates looping of length equals to total areas number
-            {
-              rgdal::writeOGR(map.ar[[i]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[i], sep=' '), driver="ESRI Shapefile") #creates individual .shp files to each area
-            }
-          paste(cat('\nAll areas saved as separated .shp files \n\nMapar finalizada\n\n')) #informs that a .shp file was created to each area separately and announces the end of user interaction
+            terra::writeVector(map.ar[[i]], filename = paste0('Area', ' ', gtools::mixedsort(unique(lsp[,2]))[i], '.shp'), filetype="ESRI Shapefile") #creates individual .shp files to each area
           }
+          paste(cat('\nAll areas saved as separated .shp files \n\nMapar finished\n\n')) #informs that a .shp file was created to each area separately and announces the end of user interaction
+        }else{#conditional to "numeric" areas codes
+          for(i in 1:length(map.ar)) #creates looping of length equals to total areas number
+          {
+            terra::writeVector(map.ar[[i]], filename = paste0('Area', ' ', gtools::mixedsort(unique(lsp[,2]))[i], '.shp'), filetype="ESRI Shapefile") #creates individual .shp files to each area
+          }
+          paste(cat('\nAll areas saved as separated .shp files \n\nMapar finalizada\n\n')) #informs that a .shp file was created to each area separately and announces the end of user interaction
+        }
       }else{#conditional to areas saved individually
         if(is.character(lsp[,2])==TRUE)#conditional to "character" areas codes
-          {
-          rgdal::writeOGR(map.ar[[as.numeric(Q4)]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), driver="ESRI Shapefile") #creates .shp file with area choosen
+        {
+          terra::writeVector(map.ar[[as.numeric(Q4)]], filename = paste0('Area', ' ', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], '.shp'), filetype="ESRI Shapefile") #creates .shp file with area choosen
           paste(cat(paste('\nArea', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), 'saved as .shp file', '\n\nMapar finished\n\n')) #informs which area was saved individually and announces the end of user interaction
-          }else{#conditional to "numeric" areas codes
-        rgdal::writeOGR(map.ar[[as.numeric(Q4)]], dsn=getwd(), layer = paste('Area', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), driver="ESRI Shapefile") #creates .shp file with area choosen
-        paste(cat(paste('\nArea', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), 'saved as .shp file', '\n\nMapar finished\n\n')) #informs which area was saved individually and announces the end of user interaction
+        }else{#conditional to "numeric" areas codes
+          terra::writeVector(map.ar[[as.numeric(Q4)]], filename = paste0('Area', ' ',gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], '.shp'), filetype="ESRI Shapefile") #creates .shp file with area choosen
+          paste(cat(paste('\nArea', gtools::mixedsort(unique(lsp[,2]))[as.numeric(Q4)], sep=' '), 'saved as .shp file', '\n\nMapar finished\n\n')) #informs which area was saved individually and announces the end of user interaction
         }
       }
     }else{

@@ -78,17 +78,18 @@ cdn <- function(x= NULL, cd=c(0.1, 0.5, 0.05), n=c(1, 5), spp_list=NULL, cutout=
           
           ### list to print ###
           cdn_table_l[[a]] <- cdist_table[-4,]
-          names(cdn_table_l)[[a]] <- paste("NNOUT=", nnout[a], sep='')
+          names(cdn_table_l)[[a]] <- paste("NNOUT = ", nnout[a])
           
           ### df to return ###
-          row.names(cdist_table) <- c(paste("Noise", "[", a, "]"), 
-                                      paste("BEs", "[", a, "]"), 
-                                      paste("Prop", "[", a, "]"), 
+          row.names(cdist_table) <- c("Noise", 
+                                      "BEs", 
+                                      "Prop", 
                                       paste("NNOUT", a, "#######"))
+          
           cdn_table_df <- rbind(cdn_table_df, cdist_table)
     }
     print(cdn_table_l)
-    return(cdn_table_l)
+    return(cdn_table_df)
 }
 
 #############################################################################################################################

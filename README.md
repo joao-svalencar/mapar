@@ -45,10 +45,10 @@ I would like to thank Professor Alexandre Adalardo de Oliveira for high quality 
 
 ### ***Author:***
 
-Vieira-Alencar, João Paulo dos Santos (joaopaulo.valencar@usp.br) [Orcid](https://orcid.org/0000-0001-6894-6773)
+Vieira-Alencar, João Paulo dos Santos (joaopaulo.valencar@gmail.com) [Orcid](https://orcid.org/0000-0001-6894-6773), [Research Gate](https://www.researchgate.net/profile/Joao-Paulo-Alencar)
 
-Ph.D Candidate at Programa de Pós-graduação em Ecologia
+Ph.D in Ecology at USP, [Departamento de Ecologia](https://www.ib.usp.br/ecologia.html)
 
-Laboratório de Ecologia, Evolução e Conservação de Vertebrados, Departamento de Ecologia, Universidade de São Paulo, São Paulo/SP - Brasil
-
-
+Post-Doc at:
+Laboratório de Evolução e Diversidade I  - "LED 1"
+Centro de Ciências Naturais e Humanas, Universidade Federal do ABC, São Bernardo do Campo, SP – Brazil
