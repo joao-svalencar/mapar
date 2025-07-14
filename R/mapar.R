@@ -66,7 +66,7 @@ mapar <- function(grid, mpa, lsp, plot=FALSE, shp=NULL, prop=FALSE, propcut=0, n
   
   ##### spp list and areas if's #####
   
-  if(class(lsp)!= 'data.frame') #verifying species list and areas object class, should be data.frame
+  if(!is.data.frame(lsp)) #verifying species list and areas object class, should be data.frame
   {
     stop("lsp is not a data.frame, fix to continue") #stops function and give a warning
   }

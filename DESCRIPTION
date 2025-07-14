@@ -1,21 +1,20 @@
 Package: mapar
 Title: Mapping Biotic Elements in R
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person(given = "João Paulo dos Santos",
            family = "Vieira-Alencar",
            role = c("aut", "cre"),
-           email = "joaopaulo.valencar@usp.br",
+           email = "joaopaulo.valencar@gmail.com",
            comment = c(ORCID = "https://orcid.org/0000-0001-6894-6773"))
-Description: This package have been developed to ease the decision making process for the mapping steps of the Biotic Element Analysis (BEA) outputs.
+Description: Developed to ease the decision making process for the mapping steps of the Biotic Element Analysis (BEA) outputs.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.3.2
 Imports: 
     dplyr,
     gtools,
     prabclus,
-    rgdal,
-    sp
+    terra
